@@ -1,0 +1,71 @@
+$size: 150px;
+.digital{
+  font-size: 55px;
+  margin-left: 50%;
+}
+.analog{
+  background: gray;
+  border-radius: 100%;
+  border: solid black;
+  height: $size;
+  margin: 0 auto 10px auto;
+  width: $size;
+}
+.middle{
+  background:black;
+  border-radius: 100%;
+  &.h{
+    margin-top: 37.5px;
+    height: 25%;
+  }
+  &.m{
+    margin-top: 22.5px;
+    height: 35%;
+  }
+  &.s{
+    height: 50%;
+  }
+}
+.needle{
+  position:absolute;
+  height: $size;
+  left: 50%;
+  &.h{
+    width: 8px;
+  }
+  &.m{
+    width: 4px;
+  }
+  &.s{
+    width: 2px;
+  }
+
+}
+.number{
+  margin-top: -20px;
+}
+@for $i from 1 through 60{
+  .needle.m{
+    &.m-#{$i}{
+       transform: rotate($i*6deg); 
+    }
+  }
+  .needle.s{
+    &.s-#{$i}{
+       transform: rotate($i*6deg); 
+    }
+  }
+}
+@for $i from 1 through 12{
+  .hour-#{$i}{
+    height: $size;
+    position: absolute;
+    left: 49.7%;
+    transform: rotate($i*30deg);
+  }
+  .needle.h{
+    &.h-#{$i}{
+       transform: rotate($i*30deg); 
+    }
+  }
+}

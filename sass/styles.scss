@@ -1,85 +1,71 @@
-$box-size: 300px;
-.clear{
-  clear: both;
+$size: 150px;
+.digital{
+  font-size: 55px;
+  margin-left: 50%;
 }
-.won-alert{
-  background-color: aqua;
-  left: 33%;
-  position: absolute;
-  text-align: center;
-  top: 5px;
-  width: 100px
+.analog{
+  background: gray;
+  border-radius: 100%;
+  border: solid black;
+  height: $size;
+  margin: 0 auto 10px auto;
+  width: $size;
 }
-.reset{
-  font-size: 30px;
-  height: 100px;
-  left: 47%;
+.middle{
+  background:black;
+  border-radius: 100%;
+  &.h{
+    margin-top: 37.5px;
+    height: 25%;
+  }
+  &.m{
+    margin-top: 22.5px;
+    height: 35%;
+  }
+  &.s{
+    height: 50%;
+  }
+}
+.needle{
   position:absolute;
-  width: 100px;
-}
-.box.won{
-  background-color: lightblue;
-}
-.box.end{
-  opacity: 0.5;
-}
-.win{
-  background-color: yellow;
-  height: 30px;
-  left: 30%;
-  position: absolute;
-  top: 0;
-  width: auto;
-}
-.line{
-  background-color: black;
-  height: 100%;
+  height: $size;
   left: 50%;
-  position: absolute;
-  width: 2px;
-  &.r{
-    transform: rotate(30deg);
+  &.h{
+    width: 8px;
   }
-  &.l{
-    transform: rotate(330deg);
+  &.m{
+    width: 4px;
   }
-}
-.letter{
-  font-size: $box-size/3;
-  line-height: $box-size/3;
-  position:relative;
-  text-align: center;
-}
-.box:hover{
-  opacity: 0.5;
-}
-.box.won:hover{
-  opacity: 1;
-}
-.box{
-  background-color: lightgreen;
-  border-style: solid;
-  border-color: black;
-  border-right: none;
-  border-bottom: none;
-  position:relative;
-}
-.outer{
-  height: $box-size;
-  left: 30%;
-  padding-bottom: 50px;
-  position:relative;
-  width: $box-size;
-  & .inner{
-    width: ($box-size/3)-5px;
-    height: ($box-size/3);
-    float: left;
-  }
-  & .inner:nth-child(3n){
-    border-right: solid;
-  }
-   & .inner:nth-last-child(-n+3){
-    border-bottom: solid;
+  &.s{
+    width: 2px;
   }
 
+}
+.number{
+  margin-top: -20px;
+}
+@for $i from 1 through 60{
+  .needle.m{
+    &.m-#{$i}{
+       transform: rotate($i*6deg); 
+    }
+  }
+  .needle.s{
+    &.s-#{$i}{
+       transform: rotate($i*6deg); 
+    }
+  }
+}
+@for $i from 1 through 12{
+  .hour-#{$i}{
+    height: $size;
+    position: absolute;
+    left: 49.7%;
+    transform: rotate($i*30deg);
+  }
+  .needle.h{
+    &.h-#{$i}{
+       transform: rotate($i*30deg); 
+    }
+  }
 }
